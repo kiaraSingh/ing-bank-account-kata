@@ -21,13 +21,13 @@ public class TransactionController {
 	@GetMapping(path= "/transactions/{accountId}")
     public ResponseEntity<List<Transaction>> findTransactionHistoryByAccountId(@PathVariable long accountId) {
 		List<Transaction> txList= txService.getTxHistoryByAccountId(accountId);
-		return ResponseEntity.accepted().body(txList);
+		return ResponseEntity.ok().body(txList);
 	}
 
 	@GetMapping(path= "/transactions")
 	public ResponseEntity<List<Transaction>> findAllTransactionHistory() {
 		List<Transaction> allTxList = txService.getAllTx();
-		return ResponseEntity.accepted().body(allTxList);
+		return ResponseEntity.ok().body(allTxList);
 	}
 
 }

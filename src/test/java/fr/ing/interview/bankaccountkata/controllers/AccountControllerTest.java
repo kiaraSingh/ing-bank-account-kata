@@ -12,7 +12,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -47,19 +46,19 @@ class AccountControllerTest {
 	@Test
 	void givenAccountIdAsInput_toDeposit_thenCheckOk() throws Exception {
 		mockMvc.perform(get("/account/deposit/1").content("{\"id\": \"1L\",\"amount\": \"100.0\"}")
-				.contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isAccepted());
+				.contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
 	}
 
 	@Test
 	void givenAccountIdAsInput_toWithdraw_thenCheckOk() throws Exception {
 		mockMvc.perform(get("/account/withdraw/1").content("{\"id\": \"1L\",\"amount\": \"100.0\"}")
-				.contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isAccepted());
+				.contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
 	}
 
 	@Test
 	void givenAccountIdAsInput_toGetBalance_thenCheckOk() throws Exception {
 		mockMvc.perform(get("/account/balance/1").content("{\"id\": \"1L\"")
-				.contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isAccepted());
+				.contentType(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
 	}
 
 }
